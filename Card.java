@@ -43,13 +43,11 @@ class Card{
     int state = DECK;
     int value = rank;
     
-    String cardName = suitName + " " + rankName;
+    String cardName = rankName + " of " + suitName;
 
     return cardName;
   } // end inCards
-
   
-
   public void setUpCards(){
     for(int i = 0; i < 52; i++){
       cards.add(0);
