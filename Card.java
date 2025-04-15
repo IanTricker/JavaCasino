@@ -11,15 +11,15 @@ class Card{
 
   public static void main(String[] args){
     Card ca = new Card();
-    ca.test();
+    ca.start();
   } // end main
 
-  public void test(){
+  public void start(){
     setUpCards();
     Random random = new Random();
     int randomNumber = random.nextInt(52);
-    System.out.println(inCards(randomNumber));
-  } // end test
+
+  } // end start
 
   public String inCards(int cardNum){
     int NUMCARDS = 52;
