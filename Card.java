@@ -7,15 +7,10 @@ class Card{
   int suit;
   int rank;
   int id;
-  String suitName;
-  String rankName;
-  int state;
-  int value;
-  int NUMCARDS;
   int DECK;
-  int player;
-  int dealer;
-  int discard;
+  int PLAYER;
+  int DEALER;
+  int DISCARD;
 
 
   public Card(){
@@ -29,12 +24,14 @@ class Card{
 
   public void start(){
     setUpCards();
-    randomCard();
-    
+    for(int i = 0; i < 52; i++){
+     playCards(PLAYER);
+     printCards(PLAYER);
+     discardCards();
+    }
   } // end start
 
   public String inCards(int cardNum){
-    NUMCARDS = 52;
     String[] RANKNAME = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
     String[] FILE_RANK_NAME = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
     String[] SUITNAME = {"clubs", "hearts", "spades", "diamonds"};
@@ -42,19 +39,18 @@ class Card{
     int[] VALUE = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
 
     DECK = 0;
-    player = 1;
-    dealer = 2;
-    discard = 3;
+    PLAYER = 1;
+    DEALER = 2;
+    DISCARD = 3;
 
     id = cardNum;
     suit = Math.floorDiv(cardNum, 13);
     rank = cardNum % 13;
 
-    suitName = SUITNAME[suit];
-    rankName = RANKNAME[rank];
+    String suitName = SUITNAME[suit];
+    String rankName = RANKNAME[rank];
 
-    state = DECK;
-    value = VALUE[rank];
+    int value = VALUE[rank];
     
     String cardName = rankName + "," + suitName + "," + value;
 
@@ -67,32 +63,72 @@ class Card{
     return randomNumber;
   } // end randomCard
 
-  public void playerCards(){
-    int num = randomCard();
-    if(cards.get(num).equals(0)){
-      cards.set(num, 1);
-    } // end if
-    System.out.print(inCards(num));
+  public int playCards(int state){
+    int value = -1;
+    String cardName;
+    int num;
+    while(value == -1){
+      num = randomCard();
+      if(cards.get(num).equals(0)){
+        cards.set(num, state);
+        cardName = inCards(num);
+        String[] cardNames = cardName.split(",");
+        value = Integer.parseInt(cardNames[2]);
+	return value;
+      } // end if
+      checkCards();
+    } // end while
+    return value;
   } // end playerCard
 
-  public void dealerCards(){
-    int num = randomCard();
-    if(cards.get(num).equals(0)){
-      cards.set(num, 2);
-    } // end if
-  } // end dealerCards
+  public void printCards(int state){
+    int value;
+    String cardName;
+    String rankName;
+    String suitName;
+    for(int i = 0; i < 52; i++){
+      if(cards.get(i).equals(state)){
+        cardName = inCards(i);
+	String[] cardNames = cardName.split(",");
+	rankName = cardNames[0];
+	suitName = cardNames[1];
+	value = Integer.parseInt(cardNames[2]);
+	System.out.println("Card name: " + rankName + " of " + suitName + " Value: " + value);
+      } // end if
+    } // end for
+  } // end printPlayer
 
   public void discardCards(){
     for(int i = 0; i < 52; i++){
       if(cards.get(i).equals(1) || cards.get(i).equals(2)){
         cards.set(i, 3);
       } // end if
-    } // end while
+    } // end for
   } // end discardCards
+
+  public void shuffleCards(){
+    for(int i = 0; i < 52; i++){
+      cards.set(i, 0);
+    } // end for
+  } // end shuffleCards
+
+  public void checkCards(){
+    int shuffdeck = 0;
+    for(int i = 0; i < 52; i++){
+      if(cards.get(i).equals(3)){
+        shuffdeck = shuffdeck + 3;
+      } // end if
+    } // end for
+    if(shuffdeck > 117){
+      shuffleCards();
+      shuffdeck = 0;
+      System.out.println("Shuffling");
+    } // end if
+  } // end checkCards
   
   public void setUpCards(){
     for(int i = 0; i < 52; i++){
-      cards.add(1);
+      cards.add(0);
     } // end for
   } // end setUpCards
 } // end card class
