@@ -61,14 +61,34 @@ class Card{
     return cardName;
   } // end inCards
 
-  public void randomCard(){
+  public int randomCard(){
     Random random = new Random();
     int randomNumber = random.nextInt(52);
-    cards.get(1);
-    if(cards.get(randomNumber).equals(0)){
-      cards.set(randomNumber, 1);
-    } // end if
+    return randomNumber;
   } // end randomCard
+
+  public void playerCards(){
+    int num = randomCard();
+    if(cards.get(num).equals(0)){
+      cards.set(num, 1);
+    } // end if
+    System.out.print(inCards(num));
+  } // end playerCard
+
+  public void dealerCards(){
+    int num = randomCard();
+    if(cards.get(num).equals(0)){
+      cards.set(num, 2);
+    } // end if
+  } // end dealerCards
+
+  public void discardCards(){
+    for(int i = 0; i < 52; i++){
+      if(cards.get(i).equals(1) || cards.get(i).equals(2)){
+        cards.set(i, 3);
+      } // end if
+    } // end while
+  } // end discardCards
   
   public void setUpCards(){
     for(int i = 0; i < 52; i++){
