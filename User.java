@@ -79,4 +79,9 @@ class User{
   public void subMoney(int debt){
     this.money = this.money - debt;
   } // end lossMoney
+
+  public int getMon(){
+    int money = this.money;
+    return money;
+  }
 }

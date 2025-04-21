@@ -82,7 +82,6 @@ class Card{
   } // end playerCard
 
   public void printCards(int state){
-    int value;
     String cardName;
     String rankName;
     String suitName;
@@ -92,8 +91,7 @@ class Card{
 	String[] cardNames = cardName.split(",");
 	rankName = cardNames[0];
 	suitName = cardNames[1];
-	value = Integer.parseInt(cardNames[2]);
-	System.out.println("Card name: " + rankName + " of " + suitName + " Value: " + value);
+	System.out.println(rankName + " of " + suitName);
       } // end if
     } // end for
   } // end printPlayer
