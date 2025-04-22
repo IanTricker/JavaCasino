@@ -74,26 +74,48 @@ class Card{
         cardName = inCards(num);
         String[] cardNames = cardName.split(",");
         value = Integer.parseInt(cardNames[2]);
-	return value;
+	      return value;
       } // end if
       checkCards();
     } // end while
     return value;
   } // end playerCard
 
-  public void printCards(int state){
+  public int printCards(int state){
     String cardName;
     String rankName;
     String suitName;
+    int value = 0;
+    int num = 0;
     for(int i = 0; i < 52; i++){
       if(cards.get(i).equals(state)){
         cardName = inCards(i);
-	String[] cardNames = cardName.split(",");
-	rankName = cardNames[0];
-	suitName = cardNames[1];
-	System.out.println(rankName + " of " + suitName);
+	      String[] cardNames = cardName.split(",");
+	      rankName = cardNames[0];
+	      suitName = cardNames[1];
+        value = Integer.parseInt(cardNames[2]);
+	      System.out.println(rankName + " of " + suitName);
+        num = num + value;
       } // end if
     } // end for
+    return num;
+  } // end printPlayer
+
+  public String cardRank(int state){
+    String cardName;
+    String rankName;
+    String cardRanks="";
+    int value = 0;
+    int num = 0;
+    for(int i = 0; i < 52; i++){
+      if(cards.get(i).equals(state)){
+        cardName = inCards(i);
+	      String[] cardNames = cardName.split(",");
+	      rankName = cardNames[0];
+        cardRanks = rankName + "," + rankName;
+      } // end if
+    } // end for
+    return cardRanks;
   } // end printPlayer
 
   public void discardCards(){
@@ -111,6 +133,7 @@ class Card{
   } // end shuffleCards
 
   public void checkCards(){
+    Scanner input = new Scanner(System.in);
     int shuffdeck = 0;
     for(int i = 0; i < 52; i++){
       if(cards.get(i).equals(3)){
@@ -120,7 +143,8 @@ class Card{
     if(shuffdeck > 117){
       shuffleCards();
       shuffdeck = 0;
-      System.out.println("Shuffling");
+      System.out.println("\nShuffling");
+      input.nextLine();
     } // end if
   } // end checkCards
   
