@@ -37,7 +37,7 @@ class Blackjack extends Card{
       user.checkMoney();
       System.out.print("How much do you bet: ");
       response = input.nextLine();
-      bet = Integer.parseInt(response);
+      bet = tryParseInt(response);
 
       int topCard = playCards(2);
       System.out.println("\nDealers Card: ");
@@ -97,12 +97,19 @@ class Blackjack extends Card{
 
   public void hit(){
     playCards(PLAYER);
+    String[] cardRanks = cardRank(PLAYER).split(",");
+    
     System.out.println("\nDealers card: ");
     dealVal = printCards(2);
     System.out.println("Value: " + dealVal + "\n");
 
     System.out.println("Player Cards: ");
     playVal = printCards(PLAYER);
+    for(int i = 0; i < cardRanks.length; i++){
+      if(cardRanks[i].equals("Ace") && playVal > 21){
+        playVal = playVal - 10;
+      } // end if
+    } // end for
     System.out.print("Value: " + playVal + "\n");
   } // end hit
 
@@ -121,8 +128,15 @@ class Blackjack extends Card{
 	System.out.println("Value: " + playVal + "\n");
       while(dealVal < playVal && dealVal < 16){
         playCards(2);
+        String[] cardRanks = cardRank(2).split(",");
+
         System.out.println("\nDealers cards: ");
 	dealVal = printCards(2);
+	for(int i = 0; i < cardRanks.length; i++){
+          if(cardRanks[i].equals("Ace") && dealVal > 21){
+            dealVal = dealVal - 10;
+	  } // end if
+	} // end for
         System.out.println("Value: " + dealVal + "\n");
 
 	System.out.println("Player Cards: ");
@@ -166,5 +180,13 @@ class Blackjack extends Card{
     System.out.println("You lose $" + bet + "\n");
     user.subMoney(bet);
   } // end subBet
+
+  public int tryParseInt(String num){
+    try{
+      return Integer.parseInt(num);
+    } catch(NumberFormatException e){
+      return 0;
+    } // end try catch
+  } // end if
 
 } // end Blackjack
