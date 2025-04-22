@@ -60,10 +60,10 @@ class User{
     if(dif.equals("easy")){
       this.money = 10000;
     } // end if
-    if(dif.equals("medium")){
+    else if(dif.equals("medium")){
       this.money = 1000;
     } // end if
-    if(dif.equals("hard")){
+    else{
       this.money = 100;
     } // end if
   } // end setMoney
