@@ -20,12 +20,18 @@ The checkCards() method is used to check how many cards are in the discard(3) an
 
 ### Blackjack class
 The Blackjack method inherits the card class and has an instance of User.
-The game() method is used to run the game. 
+The game() method is used to run the game. It checks the money to make sure that you are above 0. It loops through the if staments to check if you win or lose.
+The hit() method is used to add a card to the player hand and add the value.
+The stand() method is used to check if the dealer has more or less than the player if less and below 16 the dealer will add cards to his hand till over 16. 
+The insurance() method is used to add insurace to your move as a side be if the deal has blackjack. 
+The addBet() adds the bet amount to total money.
+The subBet() subtracts the bet amount to total money.
 
 ## Use case analysis
-
+The users of this game are people who like having fun, have a cripling gambling addiction or people who want to learn how to card count. The user is trying to make as much money as they can without losing it all.
 
 ## Data design
+
 
 ## Algorithm
 
