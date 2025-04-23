@@ -12,20 +12,33 @@ This class is used to set and add or subtract money. The setMoney() method ask w
 This class is used as a data base for the cards. I used an array list to hold the cards. 
 
 To make the data base I have a method called setUpCards() which adds 52 zeros to the array list. Zero represents the cards in a deck, one represents cards the player has, two represents cards the dealer has, and three represents discarded cards. 
+
 The inCards(int cardNum) method is used to calculate the what the card is in the deck and output the card name. 
+
 The playCards(int state) takes in the "state" or who the card is going to either the player or dealer and it will get a random number check to see if that card is in the deck still and give you a new card that is in the deck and changes the state in the data base. This method will send back the value of the card.
+
 The printCards(int state) method takes in the state of what you want to output and go through the array list to find all the cards in the data base with the same state and prints it and will return the value of all the cards in that state.
+
 The discardCards() method takes all the cards in the data base that are for the player(1) and dealer(2) and changes them to discard(3).
-The shuffleCards() method makes all the cards in the data base deck(0)
+
+The shuffleCards() method makes all the cards in the data base deck(0).
+
 The checkCards() method is used to check how many cards are in the discard(3) and if it is over 40 then it will shuffle the deck.
+
 
 ### Blackjack class
 The Blackjack method inherits the card class and has an instance of User.
+
 The game() method is used to run the game. It checks the money to make sure that you are above 0. It loops through the if staments to check if you win or lose.
+
 The hit() method is used to add a card to the player hand and add the value.
+
 The stand() method is used to check if the dealer has more or less than the player if less and below 16 the dealer will add cards to his hand till over 16. 
+
 The insurance() method is used to add insurace to your move as a side be if the deal has blackjack. 
+
 The addBet() adds the bet amount to total money.
+
 The subBet() subtracts the bet amount to total money.
 
 ## Use case analysis
