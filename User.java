@@ -48,10 +48,6 @@ class User{
     this.money = money;
   } // end constructor
 
-  public int getMoney(){
-    return this.money;
-  } // end getMoney
-
   public void setMoney(){
     Scanner input = new Scanner(System.in);
     System.out.println("What diffucluty do you want");

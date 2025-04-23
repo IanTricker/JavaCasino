@@ -1,3 +1,6 @@
+run: Blackjack.class
+	java Blackjack
+
 Blackjack.class: Blackjack.java User.class Card.class
 	javac -g Blackjack.java
 
