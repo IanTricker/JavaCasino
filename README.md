@@ -10,6 +10,7 @@ This class is used to set and add or subtract money. The setMoney() method ask w
 
 ### Card class
 This class is used as a data base for the cards. I used an array list to hold the cards. 
+
 To make the data base I have a method called setUpCards() which adds 52 zeros to the array list. Zero represents the cards in a deck, one represents cards the player has, two represents cards the dealer has, and three represents discarded cards. 
 The inCards(int cardNum) method is used to calculate the what the card is in the deck and output the card name. 
 The playCards(int state) takes in the "state" or who the card is going to either the player or dealer and it will get a random number check to see if that card is in the deck still and give you a new card that is in the deck and changes the state in the data base. This method will send back the value of the card.
